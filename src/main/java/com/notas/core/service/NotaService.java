@@ -6,6 +6,7 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.notas.core.converter.Convertidor;
@@ -92,5 +93,9 @@ public class NotaService {
 		notas = convertidor.convertirLista(repositorio.findAll());
 		logger.info("NOTA LISTADA");
 		return notas;
+	}
+	
+	public List<MNota> obtenerPorPaginacion(Pageable pageable){
+		return convertidor.convertirLista(repositorio.findAll(pageable).getContent());
 	}
 }
