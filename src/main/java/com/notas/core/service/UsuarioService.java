@@ -26,7 +26,7 @@ public class UsuarioService implements UserDetailsService{
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		Usuario user = repo.findByUsuario(username);
-		return new User(user.getContraseña(), user.getContraseña(), 
+		return new User(user.getUsuario(), "{noop}"+user.getContrasena(), 
 				user.isActivo(), user.isActivo(), user.isActivo(), user.isActivo(), 
 				buildGrante(user.getRol()));
 	}

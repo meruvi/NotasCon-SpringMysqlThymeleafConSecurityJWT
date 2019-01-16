@@ -20,8 +20,8 @@ public class Usuario implements Serializable{
 	@Column(name="USUARIO", unique=true)
 	private String usuario;
 	
-	@Column(name="CONTRASEÑA")
-	private String contraseña;
+	@Column(name="CONTRASENA")
+	private String contrasena;
 	
 	@Column(name="ROL")
 	private byte rol;
@@ -45,12 +45,12 @@ public class Usuario implements Serializable{
 		this.usuario = usuario;
 	}
 
-	public String getContraseña() {
-		return contraseña;
+	public String getContrasena() {
+		return contrasena;
 	}
 
-	public void setContraseña(String contraseña) {
-		this.contraseña = contraseña;
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
 	}
 
 	public byte getRol() {
