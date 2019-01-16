@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.notas.core.entity.Nota;
 import com.notas.core.model.MNota;
@@ -44,7 +45,13 @@ public class NotaController {
 	}
 	
 	@GetMapping("/notas")
-	public List<MNota> obtenerNotas(Pageable pageable) {
-		return service.obtenerPorPaginacion(pageable);
+	public ModelAndView obtenerNotas(Pageable pageable) {
+		
+		ModelAndView mav = new ModelAndView("template");
+		
+		List<MNota> notas = service.obtenerPorPaginacion(pageable);
+		mav.addObject("notas", notas);
+		
+		return mav;
 	}
 }
